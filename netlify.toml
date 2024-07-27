@@ -1,12 +1,9 @@
 [build]
-  publish = "out"
-  command = "npm run build && npm run export"
+  command = "npm run build"  # Only build, no export
+  publish = ".next"
 
-[context.production.environment]
+[build.environment]
   NODE_ENV = "production"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
